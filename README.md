@@ -15,14 +15,15 @@
   (REQUIRED) VAULT_URL = 'http://myvault.com:8200'
   (REQUIRED) VAULT_PKI_URL = VAULT_URL + '/v1/pki'
 
-  # For HTTPS add the path to the certificate chain.
+  # For HTTPS add the path to the certificate chain file on your Lemur server. This typically looks like /etc/ssl/certs/ca-certificates.crt.
+  # If your Hashi Vault server uses a private certificate authority make sure the chain is present in the certificate bundle you specify.
   (OPTIONAL) VAULT_CA = '/path/ca/certificate'
 
   # Authentication options:
   (REQUIRED) VAULT_AUTH = 'TOKEN' | 'USERPASS' | 'CERT' | 'APPROLE' | 'LDAP' | 'GCP'
   VAULT_AUTH_PATH = 'authentication mounting point name' # Default to be the auth name
   
-  # Token Auth
+  # Token Authentication. It is not advisable to use the root token.
   VAULT_AUTH_TOKEN = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
   
   # LDAP/Userpass Auth
@@ -52,7 +53,7 @@
   pip install .
   ```
   
-4. Create a Certificate Authority in the lemur web interface.
+4. Create a Certificate Authority in the lemur web interface and specify Hashi Vault in the plugin dropdown.
 
 ## Contributing
 1. Fork it!
